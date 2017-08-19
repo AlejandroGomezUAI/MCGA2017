@@ -29,6 +29,7 @@ namespace ASF.Services.Http
         {
             try
             {
+                //instancia de la business
                 var bc = new CategoryBusiness();
                 return bc.Add(category);
             }
