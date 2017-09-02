@@ -32,8 +32,9 @@ namespace ASF.UI.Process
 
         public Category findCategory(int id)
         {
-
-            var response = HttpGet<FindResponse>("rest/Category/Find/{id}", MediaType.Json);
+            var dic = new Dictionary<string, object>();
+            dic.Add("Id", id);
+            var response = HttpGet<FindResponse>("rest/Category/Find", dic, MediaType.Json);
             return response.Result;
 
         }
