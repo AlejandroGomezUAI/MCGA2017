@@ -44,9 +44,11 @@ namespace ASF.UI.Process
             ProcessComponent.HttpPost<Category>("rest/Category/Edit", category, MediaType.Json);
         }
 
-        public void deleteCategory(Category category)
+        public void deleteCategory(int id)
         {
-            ProcessComponent.HttpPost<Category>("rest/Category/Remove", category, MediaType.Json);
+            var dic = new Dictionary<string, object>();
+            dic.Add("Id", id);
+            ProcessComponent.HttpGet<Category>("rest/Category/Remove/{id}", dic, MediaType.Json);
         }
     }
 }

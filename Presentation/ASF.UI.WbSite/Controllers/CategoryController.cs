@@ -50,10 +50,10 @@ namespace ASF.UI.WbSite.Controllers
             return View(cp.findCategory(id));
         }
         [HttpPost]
-        public ActionResult Delete(Category category)
+        public ActionResult Delete(int id, Category category)
         {
             var cp = new CategoryProcess();
-            cp.deleteCategory(category);
+            cp.deleteCategory(id);
             return RedirectToAction("Index");
         }
     }
