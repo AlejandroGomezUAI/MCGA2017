@@ -255,6 +255,7 @@
     <Compile Include="Constants\HomeController\HomeControllerAction.cs" />
     <Compile Include="Constants\HomeController\HomeControllerRoute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -439,6 +440,7 @@
     <Content Include="Content\icons\favicon-192x192.png" />
     <Content Include="Content\icons\favicon-32x32.png" />
     <Content Include="Content\icons\favicon-96x96.png" />
+    <Content Include="DataBase\base.sql" />
     <Content Include="favicon.ico" />
     <Content Include="Content\icons\mstile-144x144.png" />
     <Content Include="Content\icons\mstile-150x150.png" />
@@ -539,6 +541,10 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Category\Create.cshtml" />
+    <Content Include="Views\Category\Edit.cshtml" />
+    <Content Include="Views\Category\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -68,7 +68,7 @@ namespace ASF.Services.Http
             }
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("Edit")]
         public void Edit(Category category)
         {
@@ -90,7 +90,7 @@ namespace ASF.Services.Http
         }
 
         [HttpGet]
-        [Route("Find/{id}")]
+        [Route("Find")]
         public FindResponse Find(int id)
         {
             try

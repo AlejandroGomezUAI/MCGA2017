@@ -13,6 +13,7 @@ using System.Text;
 using System.Data.Common;
 using System.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data;
+using Microsoft.Practices.EnterpriseLibrary;
 using ASF.Entities;
 
 namespace ASF.Data
