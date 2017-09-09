@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ASF.UI.Process;
 using ASF.Entities;
+using ASF.UI.WbSite.Services.Cache;
 
 namespace ASF.UI.WbSite.Controllers
 {
@@ -14,7 +15,9 @@ namespace ASF.UI.WbSite.Controllers
         public ActionResult Index()
         {
             var cp = new CategoryProcess();
-            return View(cp.SelectList());
+            var lista = DataCache.Instance.CategoryList();
+            //return View(cp.SelectList());
+            return View(lista);
         }
 
         public ActionResult Create()
@@ -26,6 +29,8 @@ namespace ASF.UI.WbSite.Controllers
         {
             var cp = new CategoryProcess();
             cp.insertCategory(category);
+            DataCache.Instance.CategoryListRemove();
+            
             return RedirectToAction("Index");
         }
 

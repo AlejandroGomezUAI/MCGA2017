@@ -27,6 +27,7 @@ namespace ASF.UI.Process
 
         public void insertCategory(Category category)
         {
+            
             ProcessComponent.HttpPost<Category>("rest/Category/Add", category, MediaType.Json);
         }
 
