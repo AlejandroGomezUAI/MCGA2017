@@ -66,8 +66,36 @@ namespace ASF.UI.WbSite.Services.Cache
                     return cp.SelectList();
                 },
                 DataCacheSetting.Category.SlidingExpiration);
-            //return lista;
+        }
 
+        public List<Country> CountryList()
+        {
+            _cacheServices.Remove(DataCacheSetting.Country.Key);
+
+            var lista = _cacheServices.GetOrAdd(
+                DataCacheSetting.Country.Key,
+                () =>
+                {
+                    var cp = new CountryProcess();
+                    return cp.SelectList();
+                },
+                DataCacheSetting.Country.SlidingExpiration);
+            return lista;
+
+        }
+
+        public void CountryListRemove()
+        {
+            _cacheServices.Remove(DataCacheSetting.Country.Key);
+
+            var lista = _cacheServices.GetOrAdd(
+                DataCacheSetting.Country.Key,
+                () =>
+                {
+                    var cp = new CountryProcess();
+                    return cp.SelectList();
+                },
+                DataCacheSetting.Country.SlidingExpiration);
         }
     }
 }
