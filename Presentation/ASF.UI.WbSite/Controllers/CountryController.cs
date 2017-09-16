@@ -32,8 +32,8 @@ namespace ASF.UI.WbSite.Controllers
         {
             try
             {
-                //var cp = new CountryProcess();
-                //cp.insertCountry(country);
+                var cp = new CountryProcess();
+                cp.insertCountry(country);
                 DataCache.Instance.CountryListRemove();
 
                 return RedirectToAction("Index");

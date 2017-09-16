@@ -40,7 +40,7 @@ namespace ASF.UI.WbSite.Services.Cache
 
         public List<Category> CategoryList()
         {
-            _cacheServices.Remove(DataCacheSetting.Category.Key);
+            //_cacheServices.Remove(DataCacheSetting.Category.Key);
 
             var lista = _cacheServices.GetOrAdd(
                 DataCacheSetting.Category.Key,
@@ -70,7 +70,7 @@ namespace ASF.UI.WbSite.Services.Cache
 
         public List<Country> CountryList()
         {
-            _cacheServices.Remove(DataCacheSetting.Country.Key);
+            //_cacheServices.Remove(DataCacheSetting.Country.Key);
 
             var lista = _cacheServices.GetOrAdd(
                 DataCacheSetting.Country.Key,
