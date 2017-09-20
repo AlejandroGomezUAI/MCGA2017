@@ -68,6 +68,7 @@ namespace ASF.UI.WbSite.Controllers
             {
                 var cp = new CountryProcess();
                 cp.editCountry(country);
+                DataCache.Instance.CountryListRemove();
                 return RedirectToAction("Index");
             }
             catch
@@ -92,6 +93,7 @@ namespace ASF.UI.WbSite.Controllers
             {
                 var cp = new CountryProcess();
                 cp.deleteCountry(id);
+                DataCache.Instance.CountryListRemove();
                 return RedirectToAction("Index");
             }
             catch
