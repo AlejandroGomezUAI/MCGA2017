@@ -29,8 +29,8 @@ namespace ASF.UI.WbSite.Controllers
         {
             try
             {
-                //var cp = new CategoryProcess();
-                //cp.insertCategory(category);
+                var cp = new CategoryProcess();
+                cp.insertCategory(category);
                 DataCache.Instance.CategoryListRemove();
             
                 return RedirectToAction("Index");
@@ -61,6 +61,7 @@ namespace ASF.UI.WbSite.Controllers
             {
                 var cp = new CategoryProcess();
                 cp.editCategory(category);
+                DataCache.Instance.CategoryListRemove();
                 return RedirectToAction("Index");
              }
             catch
@@ -82,6 +83,7 @@ namespace ASF.UI.WbSite.Controllers
             {
                 var cp = new CategoryProcess();
                 cp.deleteCategory(id);
+                DataCache.Instance.CategoryListRemove();
                 return RedirectToAction("Index");
             }
             catch
