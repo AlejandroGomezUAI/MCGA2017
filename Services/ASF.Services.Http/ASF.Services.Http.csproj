@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="CategoryService.cs" />
     <Compile Include="CountryServices.cs" />
+    <Compile Include="DealerServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
