@@ -21,8 +21,8 @@ namespace ASF.Data
         /// <returns></returns>
         public Dealer Create(Dealer Dealer)
         {
-            const string sqlStatement = "INSERT INTO dbo.Dealer ([FirstName], [LastName], [CategoryId], [CountryId], [Description], [TotalProducts], [Rowid],[CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
-                "VALUES(@FirstName, @LastName, @CategoryId, @CountryId, @Descritpion, @TtoalProducts, @Rowid, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
+            const string sqlStatement = "INSERT INTO dbo.Dealer ([FirstName], [LastName], [CategoryId], [CountryId], [Description], [TotalProducts], [Rowid], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
+                "VALUES(@FirstName, @LastName, @CategoryId, @CountryId, @Descritpion, @TotalProducts, @Rowid, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(ConnectionName);
             using (var cmd = db.GetSqlStringCommand(sqlStatement))
@@ -107,7 +107,7 @@ namespace ASF.Data
         /// <returns></returns>
         public Dealer SelectById(int id)
         {
-            const string sqlStatement = "SELECT [Id], [FirstName], [LastName], [CategoryId], [CountryId], [Description], [TotalProducts], [Rowid],[CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
+            const string sqlStatement = "SELECT [Id], [FirstName], [LastName], [CategoryId], [CountryId], [Description], [TotalProducts], [Rowid], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
                 "FROM dbo.Dealer WHERE [Id]=@Id ";
 
             Dealer Dealer = null;
@@ -167,7 +167,7 @@ namespace ASF.Data
                 CountryId = GetDataValue<int>(dr, "CountryId"),
                 Description = GetDataValue<string>(dr, "Description"),
                 TotalProducts = GetDataValue<int>(dr, "TotalProducts"),
-                Rowid = GetDataValue<Guid>(dr, " Rowid"),
+                Rowid = GetDataValue<Guid>(dr, "Rowid"),
                 CreatedOn = GetDataValue<DateTime>(dr, "CreatedOn"),
                 CreatedBy = GetDataValue<int>(dr, "CreatedBy"),
                 ChangedOn = GetDataValue<DateTime>(dr, "ChangedOn"),

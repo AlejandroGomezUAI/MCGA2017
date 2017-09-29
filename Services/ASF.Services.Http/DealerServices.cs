@@ -66,7 +66,7 @@ namespace ASF.Services.Http
                 throw new HttpResponseException(httpError);
             }
         }
-        //antes era [HttpPut]
+        
         [HttpPost]
         [Route("Edit")]
         public void Edit(Dealer Dealer)
