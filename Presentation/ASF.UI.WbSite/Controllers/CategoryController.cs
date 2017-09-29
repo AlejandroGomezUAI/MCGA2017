@@ -25,12 +25,12 @@ namespace ASF.UI.WbSite.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(Category category)
+        public ActionResult Create(Category categroy)
         {
             try
             {
                 var cp = new CategoryProcess();
-                cp.insertCategory(category);
+                cp.insertCategory(categroy);
                 DataCache.Instance.CategoryListRemove();
             
                 return RedirectToAction("Index");
