@@ -58,7 +58,7 @@ namespace ASF.Data
                     "[CountryId]=@CountryId, " +
                     "[Description]=@Description, " +
                     "[TotalProducts]=@TotalProducts, " +
-                   // "[Rowid]=@Rowid, " +
+                    "[Rowid]=@Rowid, " +
                     "[CreatedOn]=@CreatedOn, " +
                     "[CreatedBy]=@CreatedBy, " +
                     "[ChangedOn]=@ChangedOn, " +
@@ -74,7 +74,7 @@ namespace ASF.Data
                 db.AddInParameter(cmd, "@CountryId", DbType.Int32, Dealer.CountryId);
                 db.AddInParameter(cmd, "@Description", DbType.String, Dealer.Description);
                 db.AddInParameter(cmd, "@TotalProducts", DbType.Int32, Dealer.TotalProducts);
-                //db.AddInParameter(cmd, "@Rowid", DbType.Guid, Dealer.Rowid);
+                db.AddInParameter(cmd, "@Rowid", DbType.Guid, Dealer.Rowid);
                 db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, Dealer.CreatedOn);
                 db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, Dealer.CreatedBy);
                 db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, Dealer.ChangedOn);
