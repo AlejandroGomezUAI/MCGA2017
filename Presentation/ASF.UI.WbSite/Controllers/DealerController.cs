@@ -26,8 +26,8 @@ namespace ASF.UI.WbSite.Controllers
             var category = new CategoryProcess().SelectList();
             var country = new CountryProcess().SelectList();
 
-            ViewBag.Category = new SelectList(category, "Id", "Name", 1031);
-            ViewBag.Country = new SelectList( country, "Id", "Name", 4);
+            ViewBag.Category = new SelectList(category, "Id", "Name");
+            ViewBag.Country = new SelectList( country, "Id", "Name");
 
             return View();
         }
@@ -66,6 +66,13 @@ namespace ASF.UI.WbSite.Controllers
         // GET: Dealer/Edit/5
         public ActionResult Edit(int id)
         {
+
+            var category = new CategoryProcess().SelectList();
+            var country = new CountryProcess().SelectList();
+
+            ViewBag.Category = new SelectList( category, "Id", "Name", id );
+            ViewBag.Country = new SelectList( country, "Id", "Name", id );
+
             var cp = new DealerProcess();
 
             return View(cp.findDealer(id));
