@@ -26,22 +26,22 @@ namespace ASF.UI.WbSite.Controllers
             var category = new CategoryProcess().SelectList();
             var country = new CountryProcess().SelectList();
 
-            ViewBag.Category = new SelectList(category, "Id", "Name");
-            ViewBag.Country = new SelectList( country, "Id", "Name" );
+            ViewBag.Category = new SelectList(category, "Id", "Name", 1031);
+            ViewBag.Country = new SelectList( country, "Id", "Name", 4);
 
             return View();
         }
 
         // POST: Dealer/Create
         [HttpPost]
-        public ActionResult Create(Dealer Dealer, string Category, string Country)
+        public ActionResult Create(Dealer Dealer)//, string Category, string Country)
         {
             try
             {
                 var cp = new DealerProcess();
 
-                Dealer.CategoryId = Int32.Parse( Category);
-                Dealer.CountryId = Int32.Parse( Country);
+                //Dealer.CategoryId = Int32.Parse( Category);
+                //Dealer.CountryId = Int32.Parse( Country);
 
                 cp.insertDealer(Dealer);
 
