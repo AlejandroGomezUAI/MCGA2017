@@ -19,27 +19,27 @@ namespace ASF.Data
         /// </summary>
         /// <param name="Dealer"></param>
         /// <returns></returns>
-        public Dealer Create(Dealer Dealer)
+        public Dealer Create ( Dealer Dealer )
         {
             const string sqlStatement = "INSERT INTO dbo.Dealer ([FirstName], [LastName], [CategoryId], [CountryId], [Description], [TotalProducts], [Rowid], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
                 "VALUES(@FirstName, @LastName, @CategoryId, @CountryId, @Descritpion, @TotalProducts, @Rowid, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
 
-            var db = DatabaseFactory.CreateDatabase(ConnectionName);
-            using (var cmd = db.GetSqlStringCommand(sqlStatement))
+            var db = DatabaseFactory.CreateDatabase( ConnectionName );
+            using (var cmd = db.GetSqlStringCommand( sqlStatement ))
             {
-                db.AddInParameter(cmd, "@FirstName", DbType.String, Dealer.FirstName);
-                db.AddInParameter(cmd, "@LastName", DbType.String, Dealer.LastName);
-                db.AddInParameter(cmd, "@CategoryId", DbType.Int32, Dealer.CategoryId);
-                db.AddInParameter(cmd, "@CountryId", DbType.Int32, Dealer.CountryId);
-                db.AddInParameter(cmd, "@Descritpion", DbType.String, Dealer.Description);
-                db.AddInParameter(cmd, "@TotalProducts", DbType.Int32, Dealer.TotalProducts);
-                db.AddInParameter(cmd, "@Rowid", DbType.Guid, Dealer.Rowid);
-                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, Dealer.CreatedOn);
-                db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, Dealer.CreatedBy);
-                db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, Dealer.ChangedOn);
-                db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, Dealer.ChangedBy);
+                db.AddInParameter( cmd, "@FirstName", DbType.String, Dealer.FirstName );
+                db.AddInParameter( cmd, "@LastName", DbType.String, Dealer.LastName );
+                db.AddInParameter( cmd, "@CategoryId", DbType.Int32, Dealer.CategoryId );
+                db.AddInParameter( cmd, "@CountryId", DbType.Int32, Dealer.CountryId );
+                db.AddInParameter( cmd, "@Descritpion", DbType.String, Dealer.Description );
+                db.AddInParameter( cmd, "@TotalProducts", DbType.Int32, Dealer.TotalProducts );
+                db.AddInParameter( cmd, "@Rowid", DbType.Guid, Dealer.Rowid );
+                db.AddInParameter( cmd, "@CreatedOn", DbType.DateTime2, Dealer.CreatedOn );
+                db.AddInParameter( cmd, "@CreatedBy", DbType.Int32, Dealer.CreatedBy );
+                db.AddInParameter( cmd, "@ChangedOn", DbType.DateTime2, Dealer.ChangedOn );
+                db.AddInParameter( cmd, "@ChangedBy", DbType.Int32, Dealer.ChangedBy );
                 // Obtener el valor de la primary key.
-                Dealer.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
+                Dealer.Id = Convert.ToInt32( db.ExecuteScalar( cmd ) );
             }
 
             return Dealer;
@@ -49,7 +49,7 @@ namespace ASF.Data
         /// 
         /// </summary>
         /// <param name="Dealer"></param>
-        public void UpdateById(Dealer Dealer)
+        public void UpdateById ( Dealer Dealer )
         {
             const string sqlStatement = "UPDATE dbo.Dealer " +
                 "SET [FirstName]=@FirstName, " +
@@ -65,23 +65,23 @@ namespace ASF.Data
                     "[ChangedBy]=@ChangedBy " +
                 "WHERE [Id]=@Id ";
 
-            var db = DatabaseFactory.CreateDatabase(ConnectionName);
-            using (var cmd = db.GetSqlStringCommand(sqlStatement))
+            var db = DatabaseFactory.CreateDatabase( ConnectionName );
+            using (var cmd = db.GetSqlStringCommand( sqlStatement ))
             {
-                db.AddInParameter(cmd, "@FirstName", DbType.String, Dealer.FirstName);
-                db.AddInParameter(cmd, "@LastName", DbType.String, Dealer.LastName);
-                db.AddInParameter(cmd, "@CategoryId", DbType.Int32, Dealer.CategoryId);
-                db.AddInParameter(cmd, "@CountryId", DbType.Int32, Dealer.CountryId);
-                db.AddInParameter(cmd, "@Description", DbType.String, Dealer.Description);
-                db.AddInParameter(cmd, "@TotalProducts", DbType.Int32, Dealer.TotalProducts);
-                db.AddInParameter(cmd, "@Rowid", DbType.Guid, Dealer.Rowid);
-                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime2, Dealer.CreatedOn);
-                db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, Dealer.CreatedBy);
-                db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime2, Dealer.ChangedOn);
-                db.AddInParameter(cmd, "@ChangedBy", DbType.Int32, Dealer.ChangedBy);
-                db.AddInParameter(cmd, "@Id", DbType.Int32, Dealer.Id);
+                db.AddInParameter( cmd, "@FirstName", DbType.String, Dealer.FirstName );
+                db.AddInParameter( cmd, "@LastName", DbType.String, Dealer.LastName );
+                db.AddInParameter( cmd, "@CategoryId", DbType.Int32, Dealer.CategoryId );
+                db.AddInParameter( cmd, "@CountryId", DbType.Int32, Dealer.CountryId );
+                db.AddInParameter( cmd, "@Description", DbType.String, Dealer.Description );
+                db.AddInParameter( cmd, "@TotalProducts", DbType.Int32, Dealer.TotalProducts );
+                db.AddInParameter( cmd, "@Rowid", DbType.Guid, Dealer.Rowid );
+                db.AddInParameter( cmd, "@CreatedOn", DbType.DateTime2, Dealer.CreatedOn );
+                db.AddInParameter( cmd, "@CreatedBy", DbType.Int32, Dealer.CreatedBy );
+                db.AddInParameter( cmd, "@ChangedOn", DbType.DateTime2, Dealer.ChangedOn );
+                db.AddInParameter( cmd, "@ChangedBy", DbType.Int32, Dealer.ChangedBy );
+                db.AddInParameter( cmd, "@Id", DbType.Int32, Dealer.Id );
 
-                db.ExecuteNonQuery(cmd);
+                db.ExecuteNonQuery( cmd );
             }
         }
 
@@ -89,14 +89,14 @@ namespace ASF.Data
         /// 
         /// </summary>
         /// <param name="id"></param>
-        public void DeleteById(int id)
+        public void DeleteById ( int id )
         {
             const string sqlStatement = "DELETE dbo.Dealer WHERE [Id]=@Id ";
-            var db = DatabaseFactory.CreateDatabase(ConnectionName);
-            using (var cmd = db.GetSqlStringCommand(sqlStatement))
+            var db = DatabaseFactory.CreateDatabase( ConnectionName );
+            using (var cmd = db.GetSqlStringCommand( sqlStatement ))
             {
-                db.AddInParameter(cmd, "@Id", DbType.Int32, id);
-                db.ExecuteNonQuery(cmd);
+                db.AddInParameter( cmd, "@Id", DbType.Int32, id );
+                db.ExecuteNonQuery( cmd );
             }
         }
 
@@ -105,19 +105,19 @@ namespace ASF.Data
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Dealer SelectById(int id)
+        public Dealer SelectById ( int id )
         {
             const string sqlStatement = "SELECT [Id], [FirstName], [LastName], [CategoryId], [CountryId], [Description], [TotalProducts], [Rowid], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
                 "FROM dbo.Dealer WHERE [Id]=@Id ";
 
             Dealer Dealer = null;
-            var db = DatabaseFactory.CreateDatabase(ConnectionName);
-            using (var cmd = db.GetSqlStringCommand(sqlStatement))
+            var db = DatabaseFactory.CreateDatabase( ConnectionName );
+            using (var cmd = db.GetSqlStringCommand( sqlStatement ))
             {
-                db.AddInParameter(cmd, "@Id", DbType.Int32, id);
-                using (var dr = db.ExecuteReader(cmd))
+                db.AddInParameter( cmd, "@Id", DbType.Int32, id );
+                using (var dr = db.ExecuteReader( cmd ))
                 {
-                    if (dr.Read()) Dealer = LoadDealer(dr);
+                    if (dr.Read()) Dealer = LoadDealer( dr );
                 }
             }
 
@@ -128,22 +128,22 @@ namespace ASF.Data
         /// 
         /// </summary>
         /// <returns></returns>		
-        public List<Dealer> Select()
+        public List<Dealer> Select ()
         {
             // WARNING! Performance
-            const string sqlStatement = "SELECT [Id], [FirstName], [LastName], [CategoryId], [CountryId], [Description], [TotalProducts], [Rowid], [CreatedOn], [CreatedBy], [ChangedOn], " + 
+            const string sqlStatement = "SELECT [Id], [FirstName], [LastName], [CategoryId], [CountryId], [Description], [TotalProducts], [Rowid], [CreatedOn], [CreatedBy], [ChangedOn], " +
                 "[ChangedBy] FROM dbo.Dealer ";
 
             var result = new List<Dealer>();
-            var db = DatabaseFactory.CreateDatabase(ConnectionName);
-            using (var cmd = db.GetSqlStringCommand(sqlStatement))
+            var db = DatabaseFactory.CreateDatabase( ConnectionName );
+            using (var cmd = db.GetSqlStringCommand( sqlStatement ))
             {
-                using (var dr = db.ExecuteReader(cmd))
+                using (var dr = db.ExecuteReader( cmd ))
                 {
                     while (dr.Read())
                     {
-                        var Dealer = LoadDealer(dr); // Mapper
-                        result.Add(Dealer);
+                        var Dealer = LoadDealer( dr ); // Mapper
+                        result.Add( Dealer );
                     }
                 }
             }
@@ -156,22 +156,22 @@ namespace ASF.Data
         /// </summary>
         /// <param name="dr">Objeto DataReader.</param>
         /// <returns>Retorna un objeto Categoria.</returns>		
-        private static Dealer LoadDealer(IDataReader dr)
+        private static Dealer LoadDealer ( IDataReader dr )
         {
             var Dealer = new Dealer
             {
-                Id = GetDataValue<int>(dr, "Id"),
-                FirstName = GetDataValue<string>(dr, "FirstName"),
-                LastName = GetDataValue<string>(dr, "LastName"),
-                CategoryId = GetDataValue<int>(dr, "CategoryId"),
-                CountryId = GetDataValue<int>(dr, "CountryId"),
-                Description = GetDataValue<string>(dr, "Description"),
-                TotalProducts = GetDataValue<int>(dr, "TotalProducts"),
-                Rowid = GetDataValue<Guid>(dr, "Rowid"),
-                CreatedOn = GetDataValue<DateTime>(dr, "CreatedOn"),
-                CreatedBy = GetDataValue<int>(dr, "CreatedBy"),
-                ChangedOn = GetDataValue<DateTime>(dr, "ChangedOn"),
-                ChangedBy = GetDataValue<int>(dr, "ChangedBy")
+                Id = GetDataValue<int>( dr, "Id" ),
+                FirstName = GetDataValue<string>( dr, "FirstName" ),
+                LastName = GetDataValue<string>( dr, "LastName" ),
+                CategoryId = GetDataValue<int>( dr, "CategoryId" ),
+                CountryId = GetDataValue<int>( dr, "CountryId" ),
+                Description = GetDataValue<string>( dr, "Description" ),
+                TotalProducts = GetDataValue<int>( dr, "TotalProducts" ),
+                Rowid = GetDataValue<Guid>( dr, "Rowid" ),
+                CreatedOn = GetDataValue<DateTime>( dr, "CreatedOn" ),
+                CreatedBy = GetDataValue<int>( dr, "CreatedBy" ),
+                ChangedOn = GetDataValue<DateTime>( dr, "ChangedOn" ),
+                ChangedBy = GetDataValue<int>( dr, "ChangedBy" )
             };
             return Dealer;
         }

@@ -24,5 +24,17 @@ namespace ASF.UI.WbSite.Constants
             public const string Key = "Dealer";
             public static readonly TimeSpan SlidingExpiration = TimeSpan.FromHours(1);
         }
+
+        public static class Order
+        {
+            public const string Key = "Order";
+            public static readonly TimeSpan SlidingExpiration = TimeSpan.FromHours(1);
+        }
+
+        public static class Client
+        {
+            public const string Key = "Client";
+            public static readonly TimeSpan SlidingExpiration = TimeSpan.FromHours(1);
+        }
     }
 }

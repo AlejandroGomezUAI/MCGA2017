@@ -106,8 +106,8 @@ namespace ASF.UI.WbSite.Services.Cache
                 DataCacheSetting.Dealer.Key,
                 () =>
                 {
-                    var cp = new DealerProcess();
-                    return cp.SelectList();
+                    var dp = new DealerProcess();
+                    return dp.SelectList();
                 },
                 DataCacheSetting.Dealer.SlidingExpiration);
             return lista;
@@ -122,10 +122,66 @@ namespace ASF.UI.WbSite.Services.Cache
                 DataCacheSetting.Dealer.Key,
                 () =>
                 {
-                    var cp = new DealerProcess();
-                    return cp.SelectList();
+                    var dp = new DealerProcess();
+                    return dp.SelectList();
                 },
                 DataCacheSetting.Dealer.SlidingExpiration);
+        }
+
+        public List<Order> OrderList ()
+        {
+                var lista = _cacheServices.GetOrAdd(
+                DataCacheSetting.Order.Key,
+                () =>
+                {
+                    var op = new OrderProcess();
+                    return op.SelectList();
+                },
+                DataCacheSetting.Order.SlidingExpiration );
+            return lista;
+
+        }
+
+        public void OrderListRemove ()
+        {
+            _cacheServices.Remove( DataCacheSetting.Order.Key );
+
+            var lista = _cacheServices.GetOrAdd(
+                DataCacheSetting.Order.Key,
+                () =>
+                {
+                    var op = new OrderProcess();
+                    return op.SelectList();
+                },
+                DataCacheSetting.Order.SlidingExpiration );
+        }
+
+        public List<Client> ClientList ()
+        {
+            var lista = _cacheServices.GetOrAdd(
+                DataCacheSetting.Client.Key,
+                () =>
+                {
+                    var cp = new ClientProcess();
+                    return cp.SelectList();
+                },
+                DataCacheSetting.Client.SlidingExpiration );
+            return lista;
+
+        }
+
+        public void ClientListRemove ()
+        {
+            _cacheServices.Remove( DataCacheSetting.Client.Key );
+
+            var lista = _cacheServices.GetOrAdd(
+                DataCacheSetting.Client.Key,
+                () =>
+                {
+                    var cp = new ClientProcess();
+                    return cp.SelectList();
+                },
+                DataCacheSetting.Client.SlidingExpiration );
         }
     }
 }
