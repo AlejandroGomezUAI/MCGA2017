@@ -26,6 +26,12 @@ namespace ASF.Services.Contracts
 
         [DataMember]
         public List<Dealer> ResultDealer { get; set; }
+
+        [DataMember]
+        public List<Order> ResultOrder { get; set; }
+
+        [DataMember]
+        public List<Client> ResultClient { get; set; }
     }
 }
 
