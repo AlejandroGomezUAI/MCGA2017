@@ -46,6 +46,7 @@
     <Compile Include="Client.cs" />
     <Compile Include="Country.cs" />
     <Compile Include="Dealer.cs" />
+    <Compile Include="DTOs\DealerDTO.cs" />
     <Compile Include="EntityBase.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderDetail.cs" />

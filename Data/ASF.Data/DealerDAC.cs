@@ -9,11 +9,12 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary;
 using ASF.Entities;
 
+
 namespace ASF.Data
 {
     public class DealerDAC : DataAccessComponent
     {
-
+       
         /// <summary>
         /// 
         /// </summary>
