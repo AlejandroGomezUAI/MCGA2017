@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Data.Common;
 using System.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data;
-using Microsoft.Practices.EnterpriseLibrary;
 using ASF.Entities;
-
 
 namespace ASF.Data
 {
@@ -52,7 +46,7 @@ namespace ASF.Data
         /// <param name="Dealer"></param>
         public void UpdateById ( Dealer Dealer )
         {
-            const string sqlStatement = "UPDATE dbo.Dealer " +
+            const string sqlStatement = "UPDATE [dbo].[Dealer] " +
                 "SET [FirstName]=@FirstName, " +
                     "[LastName]=@LastName, " +
                     "[CategoryId]=@CategoryId, " +
@@ -108,8 +102,8 @@ namespace ASF.Data
         /// <returns></returns>
         public Dealer SelectById ( int id )
         {
-            const string sqlStatement = "SELECT [Id], [FirstName], [LastName], [CategoryId], [CountryId], [Description], [TotalProducts], [Rowid], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
-                "FROM dbo.Dealer WHERE [Id]=@Id ";
+            const string sqlStatement = @" SELECT [Id], [FirstName], [LastName], [CategoryId], [CountryId], [Description], [TotalProducts], [Rowid], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]
+                FROM dbo.Dealer WHERE [Id]=@Id ";
 
             Dealer Dealer = null;
             var db = DatabaseFactory.CreateDatabase( ConnectionName );
@@ -132,6 +126,12 @@ namespace ASF.Data
         public List<Dealer> Select ()
         {
             // WARNING! Performance
+            //const string sqlStatement = "SELECT [De].[Id], [De].[FirstName], [De].[LastName], [De].[CategoryId], [Ca].[Name], [De].[CountryId], [Co].[Name], [De].[Description], " + 
+            //    " [De].[TotalProducts], [De].[Rowid], [De].[CreatedOn], [De].[CreatedBy], [De].[ChangedOn], [De].[ChangedBy] " + 
+            //    " FROM[dbo].[Dealer] AS De INNER JOIN[dbo].[Country] AS Co " +
+            //    " ON De.CountryId = Co.Id " +
+            //    " INNER JOIN[dbo].[Category] AS Ca " +
+            //    " ON De.CategoryId = Ca.Id ";
             const string sqlStatement = "SELECT [Id], [FirstName], [LastName], [CategoryId], [CountryId], [Description], [TotalProducts], [Rowid], [CreatedOn], [CreatedBy], [ChangedOn], " +
                 "[ChangedBy] FROM dbo.Dealer ";
 
@@ -165,7 +165,9 @@ namespace ASF.Data
                 FirstName = GetDataValue<string>( dr, "FirstName" ),
                 LastName = GetDataValue<string>( dr, "LastName" ),
                 CategoryId = GetDataValue<int>( dr, "CategoryId" ),
+                //CategoryName = GetDataValue<string>(dr, "Name"),
                 CountryId = GetDataValue<int>( dr, "CountryId" ),
+                //CountryName = GetDataValue<string>(dr, "Name"),
                 Description = GetDataValue<string>( dr, "Description" ),
                 TotalProducts = GetDataValue<int>( dr, "TotalProducts" ),
                 Rowid = GetDataValue<Guid>( dr, "Rowid" ),
