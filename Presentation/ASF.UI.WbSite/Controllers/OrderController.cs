@@ -23,6 +23,10 @@ namespace ASF.UI.WbSite.Controllers
         // GET: Order/Create
         public ActionResult Create ()
         {
+            var client = new ClientProcess().SelectList();
+
+            ViewBag.Client = new SelectList( client, "Id", "FirstName" );
+           
             return View();
         }
 
