@@ -99,34 +99,64 @@ namespace ASF.UI.WbSite.Services.Cache
                 DataCacheSetting.Country.SlidingExpiration);
         }
 
-        public List<Dealer> DealerList()
+        //public List<DealerDTO> DealerList()
+        //{
+        //    //_cacheServices.Remove(DataCacheSetting.Dealer.Key);
+
+        //    var lista = _cacheServices.GetOrAdd(
+        //        DataCacheSetting.Dealer.Key,
+        //        () =>
+        //        {
+        //            var dp = new DealerProcess();
+        //            return dp.SelectList();
+        //        },
+        //        DataCacheSetting.Dealer.SlidingExpiration);
+        //    return lista;
+
+        //}
+
+        public List<DealerDTO> DealerListDTO()
         {
             //_cacheServices.Remove(DataCacheSetting.Dealer.Key);
 
             var lista = _cacheServices.GetOrAdd(
-                DataCacheSetting.Dealer.Key,
+                DataCacheSetting.DealerDTO.Key,
                 () =>
                 {
                     var dp = new DealerProcess();
                     return dp.SelectList();
                 },
-                DataCacheSetting.Dealer.SlidingExpiration);
+                DataCacheSetting.DealerDTO.SlidingExpiration);
             return lista;
 
         }
 
-        public void DealerListRemove()
+        //public void DealerListRemove()
+        //{
+        //    _cacheServices.Remove(DataCacheSetting.Dealer.Key);
+
+        //    var lista = _cacheServices.GetOrAdd(
+        //        DataCacheSetting.Dealer.Key,
+        //        () =>
+        //        {
+        //            var dp = new DealerProcess();
+        //            return dp.SelectList();
+        //        },
+        //        DataCacheSetting.Dealer.SlidingExpiration);
+        //}
+
+        public void DealerListRemoveDTO ()
         {
-            _cacheServices.Remove(DataCacheSetting.Dealer.Key);
+            _cacheServices.Remove( DataCacheSetting.DealerDTO.Key );
 
             var lista = _cacheServices.GetOrAdd(
-                DataCacheSetting.Dealer.Key,
+                DataCacheSetting.DealerDTO.Key,
                 () =>
                 {
                     var dp = new DealerProcess();
                     return dp.SelectList();
                 },
-                DataCacheSetting.Dealer.SlidingExpiration);
+                DataCacheSetting.DealerDTO.SlidingExpiration );
         }
 
         public List<Order> OrderList ()

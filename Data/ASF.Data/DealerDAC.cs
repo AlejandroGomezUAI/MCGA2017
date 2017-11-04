@@ -123,19 +123,19 @@ namespace ASF.Data
         /// 
         /// </summary>
         /// <returns></returns>		
-        public List<Dealer> Select ()
+        public List<DealerDTO> Select ()
         {
             // WARNING! Performance
-            //const string sqlStatement = "SELECT [De].[Id], [De].[FirstName], [De].[LastName], [De].[CategoryId], [Ca].[Name], [De].[CountryId], [Co].[Name], [De].[Description], " + 
-            //    " [De].[TotalProducts], [De].[Rowid], [De].[CreatedOn], [De].[CreatedBy], [De].[ChangedOn], [De].[ChangedBy] " + 
-            //    " FROM[dbo].[Dealer] AS De INNER JOIN[dbo].[Country] AS Co " +
-            //    " ON De.CountryId = Co.Id " +
-            //    " INNER JOIN[dbo].[Category] AS Ca " +
-            //    " ON De.CategoryId = Ca.Id ";
-            const string sqlStatement = "SELECT [Id], [FirstName], [LastName], [CategoryId], [CountryId], [Description], [TotalProducts], [Rowid], [CreatedOn], [CreatedBy], [ChangedOn], " +
-                "[ChangedBy] FROM dbo.Dealer ";
+            const string sqlStatement = @"SELECT [De].[Id], [De].[FirstName], [De].[LastName], [De].[CategoryId], [Ca].[Name] AS CategoryName, [De].[CountryId], [Co].[Name] AS CountryName, [De].[Description], 
+                                        [De].[TotalProducts], [De].[Rowid], [De].[CreatedOn], [De].[CreatedBy], [De].[ChangedOn], [De].[ChangedBy] 
+                                        FROM[dbo].[Dealer] AS De INNER JOIN[dbo].[Country] AS Co 
+                                        ON De.CountryId = Co.Id INNER JOIN[dbo].[Category] AS Ca 
+                                        ON De.CategoryId = Ca.Id 
+                                        order by [De].[Id] asc ";
+            //const string sqlStatement = "SELECT [Id], [FirstName], [LastName], [CategoryId], [CountryId], [Description], [TotalProducts], [Rowid], [CreatedOn], [CreatedBy], [ChangedOn], " +
+            //    "[ChangedBy] FROM dbo.Dealer ";
 
-            var result = new List<Dealer>();
+            var result = new List<DealerDTO>();
             var db = DatabaseFactory.CreateDatabase( ConnectionName );
             using (var cmd = db.GetSqlStringCommand( sqlStatement ))
             {
@@ -143,7 +143,7 @@ namespace ASF.Data
                 {
                     while (dr.Read())
                     {
-                        var Dealer = LoadDealer( dr ); // Mapper
+                        var Dealer = LoadDealerDTO( dr ); // Mapper
                         result.Add( Dealer );
                     }
                 }
@@ -151,6 +151,34 @@ namespace ASF.Data
 
             return result;
         }
+
+        /// <summary>
+        /// Crea una nueva Categoría desde un Datareader.
+        /// </summary>
+        /// <param name="dr">Objeto DataReader.</param>
+        /// <returns>Retorna un objeto Categoria.</returns>		
+        private static DealerDTO LoadDealerDTO ( IDataReader dr )
+        {
+            var Dealer = new DealerDTO
+            {
+                Id = GetDataValue<int>( dr, "Id" ),
+                FirstName = GetDataValue<string>( dr, "FirstName" ),
+                LastName = GetDataValue<string>( dr, "LastName" ),
+                CategoryId = GetDataValue<int>( dr, "CategoryId" ),
+                CategoryName = GetDataValue<string>(dr, "CategoryName" ),
+                CountryId = GetDataValue<int>( dr, "CountryId" ),
+                CountryName = GetDataValue<string>(dr, "CountryName" ),
+                Description = GetDataValue<string>( dr, "Description" ),
+                TotalProducts = GetDataValue<int>( dr, "TotalProducts" ),
+                Rowid = GetDataValue<Guid>( dr, "Rowid" ),
+                CreatedOn = GetDataValue<DateTime>( dr, "CreatedOn" ),
+                CreatedBy = GetDataValue<int>( dr, "CreatedBy" ),
+                ChangedOn = GetDataValue<DateTime>( dr, "ChangedOn" ),
+                ChangedBy = GetDataValue<int>( dr, "ChangedBy" )
+            };
+            return Dealer;
+        }
+
 
         /// <summary>
         /// Crea una nueva Categoría desde un Datareader.
@@ -165,9 +193,9 @@ namespace ASF.Data
                 FirstName = GetDataValue<string>( dr, "FirstName" ),
                 LastName = GetDataValue<string>( dr, "LastName" ),
                 CategoryId = GetDataValue<int>( dr, "CategoryId" ),
-                //CategoryName = GetDataValue<string>(dr, "Name"),
+                //CategoryName = GetDataValue<string>( dr, "Name" ),
                 CountryId = GetDataValue<int>( dr, "CountryId" ),
-                //CountryName = GetDataValue<string>(dr, "Name"),
+                //CountryName = GetDataValue<string>( dr, "Name" ),
                 Description = GetDataValue<string>( dr, "Description" ),
                 TotalProducts = GetDataValue<int>( dr, "TotalProducts" ),
                 Rowid = GetDataValue<Guid>( dr, "Rowid" ),

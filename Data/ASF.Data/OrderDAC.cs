@@ -17,14 +17,14 @@ namespace ASF.Data
         {
             const string sqlStatement = "INSERT INTO [dbo].[Order] ([ClientId], [OrderDate], [TotalPrice], [State], [OrderNumber], [ItemCount], [Rowid], " + 
                 " [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy]) " +
-                "VALUES(@ClientId, @OrderDate, @TotalPrice, @State, @OrderNumber, @ItemCount, @Rowid, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy);" + 
+                "VALUES (@ClientId, @OrderDate, @TotalPrice, @State, @OrderNumber, @ItemCount, @Rowid, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy);" + 
                 "SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase( ConnectionName );
             using (var cmd = db.GetSqlStringCommand( sqlStatement ))
             {
                 db.AddInParameter( cmd, "@ClientId", DbType.Int32, Order.ClientId );
-                db.AddInParameter( cmd, "@OrderDate", DbType.DateTime, Order.OrderDate );
+                db.AddInParameter( cmd, "@OrderDate", DbType.DateTime2, Order.OrderDate );
                 db.AddInParameter( cmd, "@TotalPrice", DbType.Double, Order.TotalPrice );
                 db.AddInParameter( cmd, "@State", DbType.Int32, Order.State );
                 db.AddInParameter( cmd, "@OrderNumber", DbType.Int32, Order.OrderNumber );

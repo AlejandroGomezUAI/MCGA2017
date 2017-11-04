@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Web;
 
 
-namespace ASF.UI.WbSite.Models
+namespace ASF.Entities
 {
     /// <summary>
     /// Represents a row of entity data.
     /// </summary>
     [Serializable]
     [DataContract]
-    public class DealerDTO
+    public class DealerDTO : EntityBase
     {
         /// <summary>
         /// 

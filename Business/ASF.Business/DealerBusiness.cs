@@ -40,7 +40,7 @@ namespace ASF.Business
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<Dealer> All()
+        public List<DealerDTO> All()
         {
             var DealerDac = new DealerDAC();
             var result = DealerDac.Select();
