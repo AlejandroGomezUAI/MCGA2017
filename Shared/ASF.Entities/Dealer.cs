@@ -20,7 +20,7 @@ namespace ASF.Entities
     /// </summary>
     [Serializable]
     [DataContract]
-    public partial class Dealer : EntityBase
+    public class Dealer : EntityBase
     {
         /// <summary>
         /// 

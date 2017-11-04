@@ -21,10 +21,10 @@ namespace ASF.UI.Process
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<Dealer> SelectList()
+        public List<DealerDTO> SelectList()
         {
             var response = HttpGet<AllResponse>("rest/Dealer/All", new Dictionary<string, object>(), MediaType.Json);
-            return response.ResultDealer;
+            return response.ResultDealerDTO;
         }
 
         public void insertDealer(Dealer Dealer)
@@ -51,7 +51,7 @@ namespace ASF.UI.Process
         {
             var dic = new Dictionary<string, object>();
             dic.Add("Id", id);
-            ProcessComponent.HttpGet<Dealer>("rest/Dealer/Remove/{id}", dic, MediaType.Json);
+            ProcessComponent.HttpGet<DealerDTO>("rest/Dealer/Remove/{id}", dic, MediaType.Json);
         }
     }
 }

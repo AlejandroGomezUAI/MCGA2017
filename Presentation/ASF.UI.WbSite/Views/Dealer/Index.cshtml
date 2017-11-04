@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ASF.Entities.Dealer>
+﻿@model IEnumerable<ASF.Entities.DealerDTO>
 
 @{
     ViewBag.Title = "Index";
@@ -17,11 +17,17 @@
         <th>
             @Html.DisplayNameFor(model => model.LastName)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.CategoryId)
-        </th>
+        </th>*@
         <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        @*<th>
             @Html.DisplayNameFor(model => model.CountryId)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.CountryName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Description)
@@ -30,19 +36,19 @@
             @Html.DisplayNameFor(model => model.TotalProducts)
         </th>
         @*<th>
-            @Html.HiddenFor(model => model.Rowid)
+            @Html.DisplayNameFor(model => model.Rowid)
         </th>
         <th>
-            @Html.HiddenFor(model => model.CreatedOn)
+            @Html.DisplayNameFor(model => model.CreatedOn)
         </th>
         <th>
-            @Html.HiddenFor(model => model.CreatedBy)
+            @Html.DisplayNameFor(model => model.CreatedBy)
         </th>
         <th>
-            @Html.HiddenFor(model => model.ChangedOn)
+            @Html.DisplayNameFor(model => model.ChangedOn)
         </th>
         <th>
-            @Html.HiddenFor(model => model.ChangedBy)
+            @Html.DisplayNameFor(model => model.ChangedBy)
         </th>*@
         <th></th>
     </tr>
@@ -55,11 +61,17 @@
         <td>
             @Html.DisplayFor(modelItem => item.LastName)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.CategoryId)
-        </td>
+        </td>*@
         <td>
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.CountryId)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.CountryName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
@@ -68,19 +80,19 @@
             @Html.DisplayFor(modelItem => item.TotalProducts)
         </td>
         @*<td>
-            @Html.HiddenFor(modelItem => item.Rowid)
+            @Html.DisplayFor(modelItem => item.Rowid)
         </td>
         <td>
-            @Html.HiddenFor(modelItem => item.CreatedOn)
+            @Html.DisplayFor(modelItem => item.CreatedOn)
         </td>
         <td>
-            @Html.HiddenFor(modelItem => item.CreatedBy)
+            @Html.DisplayFor(modelItem => item.CreatedBy)
         </td>
         <td>
-            @Html.HiddenFor(modelItem => item.ChangedOn)
+            @Html.DisplayFor(modelItem => item.ChangedOn)
         </td>
         <td>
-            @Html.HiddenFor(modelItem => item.ChangedBy)
+            @Html.DisplayFor(modelItem => item.ChangedBy)
         </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

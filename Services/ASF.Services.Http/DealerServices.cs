@@ -52,7 +52,7 @@ namespace ASF.Services.Http
             {
                 var response = new AllResponse();
                 var bc = new DealerBusiness();
-                response.ResultDealer = bc.All();
+                response.ResultDealerDTO = bc.All();
                 return response;
             }
             catch (Exception ex)

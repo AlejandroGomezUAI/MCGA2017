@@ -25,7 +25,10 @@ namespace ASF.Services.Contracts
         public List<Country> ResultCountry { get; set; }
 
         [DataMember]
-        public List<Dealer> ResultDealer { get; set; }
+        public List<DealerDTO> ResultDealer { get; set; }
+
+        [DataMember]
+        public List<DealerDTO> ResultDealerDTO { get; set; }
 
         [DataMember]
         public List<Order> ResultOrder { get; set; }
