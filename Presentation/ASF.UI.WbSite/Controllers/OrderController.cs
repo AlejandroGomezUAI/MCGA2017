@@ -21,28 +21,28 @@ namespace ASF.UI.WbSite.Controllers
         }
 
         // GET: Order/Create
-        public ActionResult Create ()
+        public ActionResult Create()
         {
             var client = new ClientProcess().SelectList();
 
-            ViewBag.Client = new SelectList( client, "Id", "FirstName" );
+            ViewBag.Client = new SelectList(client, "Id", "FirstName");
            
             return View();
         }
 
         // POST: Order/Create
         [HttpPost]
-        public ActionResult Create ( Order Order )
+        public ActionResult Create (Order Order)
         {
             try
             {
                 var cp = new OrderProcess();
 
-                cp.insertOrder( Order );
+                cp.insertOrder(Order);
 
                 DataCache.Instance.OrderListRemove();
 
-                return RedirectToAction( "Index" );
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -51,31 +51,31 @@ namespace ASF.UI.WbSite.Controllers
         }
 
         // GET: Order/Details
-        public ActionResult Details ( int id )
+        public ActionResult Details (int id)
         {
             var cp = new OrderProcess();
 
-            return View( cp.findOrder( id ) );
+            return View( cp.findOrder(id));
         }
 
         // GET: Order/Edit/5
-        public ActionResult Edit ( int id )
+        public ActionResult Edit (int id)
         {
             var cp = new OrderProcess();
 
-            return View( cp.findOrder( id ) );
+            return View( cp.findOrder(id));
         }
 
         // POST: Order/Edit/5
         [HttpPost]
-        public ActionResult Edit ( Order Order )
+        public ActionResult Edit(Order Order)
         {
             try
             {
                 var cp = new OrderProcess();
-                cp.editOrder( Order );
+                cp.editOrder(Order);
                 DataCache.Instance.OrderListRemove();
-                return RedirectToAction( "Index" );
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -84,23 +84,23 @@ namespace ASF.UI.WbSite.Controllers
         }
 
         // GET: Order/Delete/5
-        public ActionResult Delete ( int id )
+        public ActionResult Delete (int id)
         {
             var cp = new OrderProcess();
 
-            return View( cp.findOrder( id ) );
+            return View( cp.findOrder(id));
         }
 
         // POST: Order/Delete/5
         [HttpPost]
-        public ActionResult Delete ( int id, Order Order )
+        public ActionResult Delete (int id, Order Order)
         {
             try
             {
                 var cp = new OrderProcess();
-                cp.deleteOrder( id );
+                cp.deleteOrder(id);
                 DataCache.Instance.OrderListRemove();
-                return RedirectToAction( "Index" );
+                return RedirectToAction("Index");
             }
             catch
             {
