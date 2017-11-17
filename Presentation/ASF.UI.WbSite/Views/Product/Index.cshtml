@@ -7,10 +7,12 @@
 @Html.Partial("_Espacio1")
 
 <h2>Product list</h2><br />
+<i class="fa fa-shopping-cart fa-3x" style="float:right; padding-right:50px" aria-hidden="true"></i>
 
+<hr style="clear:both"/>
 @*<p>
     @Html.ActionLink("Create New", "Create")
-</p>*@
+</p>
 <table class="table">
     <tr>
         <th>
@@ -19,22 +21,22 @@
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
-        @*<th>
+        <th>
             @Html.DisplayNameFor(model => model.DealerId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Image)
-        </th>*@
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
-        @*<th>
+        <th>
             @Html.DisplayNameFor(model => model.QuantitySold)
-        </th>*@
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.AvgStars)
         </th>
-        @*<th>
+        <th>
             @Html.DisplayNameFor(model => model.Rowid)
         </th>
         <th>
@@ -48,34 +50,34 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ChangedBy)
-        </th>*@
+        </th>
         <th></th>
-    </tr>
+    </tr>*@
 
 @foreach (var item in Model) {
-    <tr>
+    @*<tr>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
-        @*<td>
+        <td>
             @Html.DisplayFor(modelItem => item.DealerId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Image)
-        </td>*@
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
-        @*<td>
+        <td>
             @Html.DisplayFor(modelItem => item.QuantitySold)
-        </td>*@
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.AvgStars)
         </td>
-        @*<td>
+        <td>
             @Html.DisplayFor(modelItem => item.Rowid)
         </td>
         <td>
@@ -89,16 +91,28 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ChangedBy)
-        </td>*@
+        </td>
         <td>
             @Html.ActionLink("Agregar", "agregarCarrito", "Cart", new { id=item.Id}, null) 
-            @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
-    </tr>
+    </tr>*@
+
+<div class="col-sm-3 ">
+    <div class="thumbnail">
+        <img src="~/Views/Product/img_product/Zapatillas1.jpg"/>
+        <div class="caption">
+            <h5 id="nombre">@Html.DisplayFor(modelItem => item.Title)</h5>
+            <p id="precio">@Html.DisplayFor(modelItem => item.Description)</p>
+            <p id="precio"> $ @Html.DisplayFor(modelItem => item.Price)</p>
+            <p>@Html.ActionLink("Agregar", "agregarCarrito", "Cart", new { id = item.Id }, new { @class = "btn btn-primary"}) @Html.ActionLink("Leer más", "Details", new { id = item.Id}) </p>
+        </div>
+    </div>
+</div>
 }
 
-</table>
+@*</table>*@
 
  @Html.Partial("_Espacio2")
