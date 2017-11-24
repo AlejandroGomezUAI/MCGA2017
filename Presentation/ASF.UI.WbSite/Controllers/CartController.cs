@@ -11,7 +11,11 @@ namespace ASF.UI.WbSite.Controllers
 {
     public class CartController : Controller
     {
-            
+           
+        public ActionResult mostrarCarrito()
+        {
+            return View(Session["Carrito"]);
+        }
 
         public ActionResult agregarCarrito(int id)
         {
