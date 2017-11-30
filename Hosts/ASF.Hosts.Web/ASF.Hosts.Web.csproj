@@ -129,6 +129,7 @@
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\appserver.pubxml" />
     <None Include="Properties\PublishProfiles\LeatherGood.pubxml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>

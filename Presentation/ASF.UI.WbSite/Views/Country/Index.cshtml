@@ -5,10 +5,11 @@
 }
 @Html.Partial("_Espacio1")
 <h2>Index</h2>
-
+<br/><br />
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary btn-sm" })
 </p>
+<br />
 <table class="table">
     <tr>
         <th>
@@ -55,4 +56,9 @@
 }
 
 </table>
+
+<div class="row">
+    @Html.ActionLink("Back to Dealer", "Index", "Dealer")
+</div>
+
 @Html.Partial("_Espacio2")
