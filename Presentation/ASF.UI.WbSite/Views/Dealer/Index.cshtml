@@ -4,11 +4,21 @@
     ViewBag.Title = "Index";
 }
 @Html.Partial("_Espacio1")
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>Index</h2>
+<br/><br />
+<div class="row">
+    <div class="col-sm-9">
+        <p>@Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary btn-sm" })</p>
+    </div>
+    <div class="col-sm-1">
+        @Html.ActionLink("Country", "Index", "Country", null, new { @class = "btn btn-success btn-sm" })
+    </div>
+    <div class="col-sm-1">
+        @Html.ActionLink("Category", "Index", "Category", null, new { @class = "btn btn-success btn-sm" })
+    </div>
+</div>
+<br/>
 <table class="table">
     <tr>
         <th>

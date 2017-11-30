@@ -6,19 +6,20 @@
 
 @Html.Partial("_Espacio1")
 
-<h2>Cart item</h2><br />
+<div class="row">
+    <div class="col-lg-8">
+        <h2>Cart item</h2><br />
+    </div>
+    <div class="col-lg-3">
+        <h4>Date: @DateTime.Now.ToShortDateString()</h4>
+    </div>
+</div>
 
 <p>
     @*@Html.ActionLink("Create New", "Create")*@
 </p>
-<table class="table">
+<table class="table table-hover">
     <tr>
-        @*<th>
-            @Html.DisplayName("Cart Id")
-        </th>
-        <th>
-            @Html.DisplayName("Product Id")
-        </th>*@
         <th>
             @Html.DisplayName("Title")
         </th>
@@ -28,35 +29,18 @@
         <th>
             @Html.DisplayName("Price")
         </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChangedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChangedBy)
-        </th>*@
         <th></th>
     </tr>
     @{ 
-        double total = 0;
+        double total = 0; 
     }
     @if(Session["Carrito"] != null)
     {
         foreach (var item in Session["Carrito"] as List<ASF.Entities.CartItemDTO>)
         {
-            total += (double) (item.Price * item.Quantity);
+            total += (double)(item.Price * item.Quantity);
+            item.ItemCount += 1;
             <tr>
-                @*<td>
-                     @Html.DisplayFor(modelItem => item.CartId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductId)
-                </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
@@ -66,22 +50,8 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.CreatedOn)
-        </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChangedOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChangedBy)
-        </td>*@
-        <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
-            @Html.ActionLink("Delete", "Delete", new { id = item.ProductId})
+            @Html.ActionLink("Delete", "Delete", new { id = item.ProductId }, new { @class = "btn btn-danger btn-sm" })
         </td>
     </tr>
         }
@@ -98,6 +68,14 @@
         </tr>
     }
 </table>
-@Html.ActionLink("Go to product list", "Index", "Product")
-
+    <div class="row">
+        <div class="col-lg-2">
+            @Html.ActionLink("Go to product list", "Index", "Product", null, new { @class = "btn btn-success" })
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-lg-4" style="float:right">
+                    @Html.ActionLink("Buy cart", "finalizarCompra", "Cart", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
 @Html.Partial("_Espacio2")
