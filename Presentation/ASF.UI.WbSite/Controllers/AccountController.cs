@@ -18,6 +18,7 @@ namespace ASF.UI.WbSite.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+       
 
         public AccountController()
         {
@@ -59,6 +60,9 @@ namespace ASF.UI.WbSite.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+            ///limpia session carrito/// 
+            Session.RemoveAll();
+            ///////////////////////////
             return View();
         }
 
@@ -396,6 +400,7 @@ namespace ASF.UI.WbSite.Controllers
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home", new { area = "" });
+            Session.RemoveAll();
         }
 
         //

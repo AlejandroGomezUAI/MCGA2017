@@ -69,13 +69,15 @@
     }
 </table>
     <div class="row">
+        <br /><br /><br />
+        <div class="col-lg-7">
+           
+        </div>
         <div class="col-lg-2">
             @Html.ActionLink("Go to product list", "Index", "Product", null, new { @class = "btn btn-success" })
         </div>
-    </div>
-        <div class="row">
-            <div class="col-lg-4" style="float:right">
-                    @Html.ActionLink("Buy cart", "finalizarCompra", "Cart", null, new { @class = "btn btn-primary" })
-            </div>
+        <div class="col-lg-1">
+            @Html.ActionLink("Buy cart", "finalizarCompra", "Cart", null, new { @class = "btn btn-primary" })
         </div>
+     </div>
 @Html.Partial("_Espacio2")

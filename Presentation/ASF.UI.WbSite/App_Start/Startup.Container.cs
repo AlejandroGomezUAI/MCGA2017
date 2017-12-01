@@ -1,4 +1,26 @@
-﻿using System;
+﻿//using System;
+//using System.Reflection;
+//using System.Web.Mvc;
+//using ASF.UI.WbSite.Models;
+//using ASF.UI.WbSite.Services.BrowserConfig;
+//using ASF.UI.WbSite.Services.Feed;
+//using ASF.UI.WbSite.Services.Logging;
+//using ASF.UI.WbSite.Services.Manifest;
+//using ASF.UI.WbSite.Services.OpenSearch;
+//using ASF.UI.WbSite.Services.Robots;
+//using ASF.UI.WbSite.Services.Sitemap;
+//using ASF.UI.WbSite.Services.SitemapPinger;
+//using Autofac;
+//using Autofac.Integration.Mvc;
+//using Microsoft.AspNet.Identity;
+//using Microsoft.AspNet.Identity.Owin;
+//using Microsoft.Owin;
+//using Microsoft.Owin.Security.Cookies;
+//using Owin;
+//using ASF.UI.WbSite.Services.Cache;
+//using Microsoft.Owin.Security.Google;
+//using Microsoft.Owin.Security.Facebook;
+using System;
 using System.Reflection;
 using System.Web.Mvc;
 using ASF.UI.WbSite.Models;
@@ -18,6 +40,11 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 using ASF.UI.WbSite.Services.Cache;
+using ASF.Framework.Localization.Kernel.Data.Context;
+using ASF.Framework.Localization.Kernel.Data.UnitOfWork;
+using ASF.Framework.Services;
+using ASF.Framework.Localization.Kernel.Interfaces.Services;
+using ASF.Framework.Localization.Kernel.Interfaces.Services.UnitOfWork;
 using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.Facebook;
 
@@ -64,15 +91,15 @@ namespace ASF.UI.WbSite
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             ////////////login con google+///////////////
-            //app.UseGoogleAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");  
+            app.UseGoogleAuthentication(
+                clientId: "1064900621984-kqlf9b5kmad2vg9au6l95c0nradrgehf.apps.googleusercontent.com",
+                clientSecret: "fKsweouhQ8yLYOlOFerHAKX5");
             ////////////////////////////////////////////
 
             ///////////login con facebook///////////////
             app.UseFacebookAuthentication(
-                appId: "365585453889571",
-                appSecret: "6a5d8fb72a3aff2f85b73144709899e2" );
+                appId:"365585453889571",
+                appSecret:"6a5d8fb72a3aff2f85b73144709899e2");
             ////////////////////////////////////////////
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.
@@ -102,9 +129,9 @@ namespace ASF.UI.WbSite
         private static void RegisterServices(ContainerBuilder builder)
         {
             builder.RegisterType<BrowserConfigService>().As<IBrowserConfigService>().InstancePerRequest();
-            builder.RegisterType<CacheService>().As<ICacheService>().SingleInstance();
+            builder.RegisterType<Services.Cache.CacheService>().As<Services.Cache.ICacheService>().SingleInstance();
             builder.RegisterType<FeedService>().As<IFeedService>().InstancePerRequest();
-            builder.RegisterType<LoggingService>().As<ILoggingService>().SingleInstance();
+            builder.RegisterType<LoggingService>().As<Services.Logging.ILoggingService>().SingleInstance();
             builder.RegisterType<ManifestService>().As<IManifestService>().InstancePerRequest();
             builder.RegisterType<OpenSearchService>().As<IOpenSearchService>().InstancePerRequest();
             builder.RegisterType<RobotsService>().As<IRobotsService>().InstancePerRequest();
@@ -112,6 +139,12 @@ namespace ASF.UI.WbSite
             builder.RegisterType<SitemapPingerService>().As<ISitemapPingerService>().InstancePerRequest();
             builder.RegisterType<EmailService>().As<IIdentityMessageService>().InstancePerRequest();
 
+            builder.RegisterType<KunturContext>().As<IKunturContext>().InstancePerRequest();
+            builder.RegisterType<UnitOfWorkManager>().As<IUnitOfWorkManager>().InstancePerDependency();
+            builder.RegisterType<LocalizationService>().As<ILocalizationService>().InstancePerDependency();
+            builder.RegisterType<SettingsService>().As<ISettingsService>().InstancePerDependency();
+            builder.RegisterType<ConfigService>().As<IConfigService>().InstancePerDependency();
+            builder.RegisterType<Framework.Services.CacheService>().As<Framework.Localization.Kernel.Interfaces.Services.ICacheService>().InstancePerDependency();
 
         }
 
