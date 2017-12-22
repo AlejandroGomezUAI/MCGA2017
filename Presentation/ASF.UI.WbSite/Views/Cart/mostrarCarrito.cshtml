@@ -106,15 +106,24 @@
     }
 </table>
 <div class="row">
-    <div class="col-lg-2">
+    <br /><br /><br />
+    <div class="col-lg-7">
+
+    </div>
+    <div class="col-sm-2">
         @Html.ActionLink("Go to product list", "Index", "Product", null, new { @class = "btn btn-success" })
     </div>
-</div>
-<div class="row">
-    <div class="col-lg-4" style="float:right">
-                @Html.ActionLink("Buy cart", "finalizarCompra", "Cart", null, new { @class = "btn btn-primary" })
+    <div class="col-sm-1">
+        @if (User.IsInRole("Usuario"))
+        {
+            @Html.ActionLink("Buy cart", "finalizarCompra", "Cart", null, new { @class = "btn btn-primary" })
+        }
+        else
+        {
+            @Html.ActionLink("Buy cart", "Login", "Account", null, new { @class = "btn btn-primary" })
+        }
     </div>
 </div>
 
-@Html.Partial("_Espacio2")
+    @Html.Partial("_Espacio2")
 

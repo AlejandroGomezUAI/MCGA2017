@@ -6,6 +6,12 @@
         @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav navbar-right">
+            @*si algun usuario logea se muestra el carrito en el menu
+            @if (User.Identity.IsAuthenticated == true)
+            {
+            }*@
+            <li>@Html.ActionLink(" ", "mostrarCarrito", "Cart", null, htmlAttributes: new { @class = "fa fa fa-cart-plus fa-2x" })</li>
+
             <li>
                 @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", new { Area = "" }, htmlAttributes: new { title = "Manage" })
             </li>
@@ -18,6 +24,7 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink(" ", "mostrarCarrito", "Cart", null, htmlAttributes: new { @class = "fa fa fa-cart-plus fa-2x" })</li>
         <li>@Html.ActionLink("Register", "Register", "Account", new { area = "" }, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Log in", "Login", "Account", new { area = "" }, htmlAttributes: new { id = "loginLink" })</li>
     </ul>

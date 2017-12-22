@@ -11,13 +11,14 @@ namespace ASF.UI.WbSite.Controllers
 {
     public class CartController : Controller
     {
-           
+        [AllowAnonymous]
         public ActionResult mostrarCarrito()
         {
             return View(Session["Carrito"]);
         }
 
-        public ActionResult agregarCarrito(int id)
+        [AllowAnonymous]
+        public ActionResult agregarCarrito(int id, int? QuantitySold)
         {
             var producto = new ProductProcess().findProduct(id);
 
@@ -28,8 +29,8 @@ namespace ASF.UI.WbSite.Controllers
                 carritoItem.ProductId = producto.Id;
                 carritoItem.Title = producto.Title;
                 carritoItem.Price = producto.Price;
-                carritoItem.Quantity = producto.QuantitySold;
-            
+                //carritoItem.Quantity = producto.QuantitySold;
+                carritoItem.Quantity = (Int32) QuantitySold;
                 cartItem.Add(carritoItem);
                 Session["Carrito"] = cartItem;
             }
@@ -40,12 +41,13 @@ namespace ASF.UI.WbSite.Controllers
                 carritoItem.ProductId = producto.Id;
                 carritoItem.Title = producto.Title;
                 carritoItem.Price = producto.Price;
-                carritoItem.Quantity = producto.QuantitySold;
+                //carritoItem.Quantity = producto.QuantitySold;
+                carritoItem.Quantity = (Int32)QuantitySold;
                 int idexistente = controlarId(id);
                 if (idexistente == -1)
                     cartItem.Add(carritoItem);
                 else
-                    cartItem[idexistente].Quantity++;
+                    cartItem[idexistente].Quantity += (Int32)QuantitySold;
                 Session["Carrito"] = cartItem;
             }
             return View();
@@ -62,6 +64,7 @@ namespace ASF.UI.WbSite.Controllers
             return -1;
         }
 
+        [Authorize]
         public ActionResult finalizarCompra()
         {
             List<CartItemDTO> compras = (List<CartItemDTO>)Session["Carrito"];
