@@ -61,7 +61,7 @@ namespace ASF.UI.WbSite.Controllers
         {
             ViewBag.ReturnUrl = returnUrl;
             ///limpia session carrito/// 
-            Session.RemoveAll();
+            //Session.RemoveAll();
             ///////////////////////////
             return View();
         }
@@ -399,8 +399,8 @@ namespace ASF.UI.WbSite.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home", new { area = "" });
             Session.RemoveAll();
+            return RedirectToAction("Index", "Home", new { area = "" });
         }
 
         //

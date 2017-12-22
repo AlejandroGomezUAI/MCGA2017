@@ -543,7 +543,18 @@
     </Content>
     <None Include="Content\Site.less" />
     <Content Include="humans.txt" />
-    <Content Include="img_product\NikeFootba.jpg" />
+    <Content Include="img_product\CH1.jpg" />
+    <Content Include="img_product\CH2.jpg" />
+    <Content Include="img_product\CM1.jpg" />
+    <Content Include="img_product\CM2.jpg" />
+    <Content Include="img_product\PH1.jpg" />
+    <Content Include="img_product\PH2.jpg" />
+    <Content Include="img_product\PM1.jpg" />
+    <Content Include="img_product\PM2.jpg" />
+    <Content Include="img_product\ZH1.jpg" />
+    <Content Include="img_product\ZH2.jpg" />
+    <Content Include="img_product\ZM1.jpg" />
+    <Content Include="img_product\ZM2.jpg" />
     <Content Include="Nota-Estado.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -618,10 +629,6 @@
     <Content Include="Sima\js\waypoints.min.js" />
     <Content Include="Views\Error\BadRequest.cshtml" />
     <Content Include="Views\Error\InternalServerError.cshtml" />
-    <Content Include="img_product\Zapatillas1.jpg" />
-    <Content Include="img_product\Zapatillas2.jpg" />
-    <Content Include="img_product\Zapatillas3.jpg" />
-    <Content Include="img_product\Zapatillas4.jpg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

@@ -77,7 +77,14 @@
             @Html.ActionLink("Go to product list", "Index", "Product", null, new { @class = "btn btn-success" })
         </div>
         <div class="col-lg-1">
-            @Html.ActionLink("Buy cart", "finalizarCompra", "Cart", null, new { @class = "btn btn-primary" })
+            @if (User.IsInRole("Usuario"))
+            {
+                @Html.ActionLink("Buy cart", "finalizarCompra", "Cart", null, new { @class = "btn btn-primary" })
+            }
+            else
+            {
+                @Html.ActionLink("Buy cart", "Login", "Account", null, new { @class = "btn btn-primary" })
+            }
         </div>
      </div>
 @Html.Partial("_Espacio2")
